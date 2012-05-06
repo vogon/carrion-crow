@@ -18,12 +18,12 @@ end
 
 get '/characters_left' do
     ensure_game
-    $game.characters_remaining
+    $game.characters_remaining.to_json
 end
 
 get '/last_word' do
     ensure_game
-    $game.last_word
+    $game.last_word.to_json
 end
 
 post '/add_word/:word' do
@@ -47,5 +47,5 @@ post '/signup' do
 end
 
 get '/is_it_my_turn/:username' do
-    $userpool.current.eql?(params[:username])
+    $userpool.current.eql?(params[:username]).to_json
 end
