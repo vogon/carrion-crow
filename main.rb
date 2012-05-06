@@ -49,7 +49,9 @@ post '/add_word/:word' do
 end
 
 get '/submit' do
+    ensure_game
     @last_word = $game.last_word
+    @characters_left = $game.characters_remaining
     haml :submit
 end
 

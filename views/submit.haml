@@ -1,14 +1,28 @@
-%script{:type => "text/javascript",
-        :src  => "public/jquery-1.7.2.min.js"}
+%input{:id => 'remaining', :type => 'hidden', :value => @characters_left}
 
-%p
-  = "Current word is: #{@last_word}"
-%p
-  The next word is
-  %p
-    %input(type='text' name='next_word' value='poopy poopy pants')
-  %p
-    %input(type='submit')
+%script{:type => "text/javascript",
+        :src  => "jquery-1.7.2.min.js"}
+
+%form(action='/submit' method='POST')
+    %p
+        = "Current word is: #{@last_word}"
+    %p
+        #characters_left
+    %p
+        The next word is
+    %p
+        %input(type='text' id='entry' name='next_word' value='poopy poopy pants')
+    %p
+        %input(type='submit')
 
 :javascript
-  window.onload = function(){ alert("welcome"); }
+    function calculate_remaining() {
+        var remaining = $('#remaining').val() - $('#entry').val().length;
+        $('#characters_left').text(remaining + " characters left!");
+    };
+
+    $('#entry').keypress(function() {
+        calculate_remaining();
+    });
+
+    $(document).ready(calculate_remaining());
