@@ -1,7 +1,10 @@
+require 'yaml'
+
+$words = YAML.load_file("./wordz.yml").shuffle
+
 class Game
     def initialize
-        @text = ""
-        @last_word = nil
+        @text = @last_word = $words.pop
     end
 
     def characters_remaining
@@ -17,13 +20,13 @@ class Game
     end
 
     def add_word(word)
-        @text << " " + word
+        @text << word + " "
 
         @last_word = word
     end
 
     def finish!
-        @text += "."
+        @text = @text.strip + "."
         # post that shit to twitter
         $tweeter.tweet_game_over(@text)
     end

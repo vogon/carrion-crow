@@ -32,7 +32,7 @@ get '/submit' do
     ensure_game
     @last_word = $game.last_word
     @characters_left = $game.characters_remaining
-    haml :submit
+    haml :get_submit
 end
 
 post '/submit' do
@@ -50,9 +50,9 @@ post '/submit' do
     end
 
     $userpool.next!
-    $tweeter.tweet_your_turn($userpool.current)
+    $tweeter.tweet_your_turn($userpool.current, params[:word])
 
-    200
+    haml :post_submit
 end
 
 get '/signup' do
