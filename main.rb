@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'json'
+require 'haml'
 
 require './userpool.rb'
 require './game.rb'
@@ -35,9 +36,13 @@ post '/add_word/:word' do
     200
 end
 
-post '/signup/:username' do
-    $userpool.add(params[:username])
+get '/signup' do
+    haml :signup
+end
 
+post '/signup' do
+    $userpool.add(params[:username])
+    puts "HEYY HEY #{params[:username]}"
     200
 end
 

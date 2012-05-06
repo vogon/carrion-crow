@@ -9,7 +9,11 @@ class Game
     end
 
     def last_word
-        @last_word
+        "pizza sticks"
+    end
+
+    def can_add_word?(word)
+        word.length < characters_remaining
     end
 
     def add_word(word)
