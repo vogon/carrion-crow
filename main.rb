@@ -1,17 +1,13 @@
 require 'sinatra'
 
-get '/' do
-    'Hello World!'
+get '/characters_left' do
+    
 end
 
-get '/new_game' do
-
-end
-
-get '/add_to_game' do
+get '/add_word' do
 
 end
 
-get '/login' do
+get '/signup' do
 
 end
