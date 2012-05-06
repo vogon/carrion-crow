@@ -49,7 +49,7 @@ get '/signup' do
     haml :signup
 end
 
-post '/signup' do
+post '/signup/:username' do
     $userpool.add(params[:username])
     200
 end
