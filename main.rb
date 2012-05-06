@@ -28,7 +28,14 @@ get '/last_word' do
     $game.last_word.to_json
 end
 
-post '/add_word/:word' do
+get '/submit' do
+    ensure_game
+    @last_word = $game.last_word
+    @characters_left = $game.characters_remaining
+    haml :submit
+end
+
+post '/submit' do
     ensure_game
 
     if (params[:word].length > $game.characters_remaining) then
@@ -46,17 +53,6 @@ post '/add_word/:word' do
     $tweeter.tweet_your_turn($userpool.current)
 
     200
-end
-
-get '/submit' do
-    ensure_game
-    @last_word = $game.last_word
-    @characters_left = $game.characters_remaining
-    haml :submit
-end
-
-post '/submit' do
-
 end
 
 get '/signup' do
