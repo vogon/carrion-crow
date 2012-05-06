@@ -31,5 +31,6 @@ class Game
         @text = @text.strip + "."
         # post that shit to twitter
         $tweeter.tweet_game_over(@text)
+        $past_tweets << @text
     end
 end
