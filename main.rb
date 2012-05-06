@@ -2,9 +2,12 @@ require 'sinatra'
 require 'json'
 
 require './userpool.rb'
+require './game.rb'
 
 $game = nil
 $userpool = UserPool.new
+
+# magic endpoint: http://192.168.2.29:4567
 
 def ensure_game
     if ($game == nil) then
@@ -34,6 +37,8 @@ end
 
 post '/signup/:username' do
     $userpool.add(params[:username])
+
+    200
 end
 
 get '/is_it_my_turn/:username' do
