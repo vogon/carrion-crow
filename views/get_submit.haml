@@ -12,9 +12,9 @@
     %p
         The next word is
     %p
-        %input(type='text' id='entry' name='word' value='poopy poopy pants')
+        %input(type='text' id='entry' name='word')
     %p
-        %input(type='submit' id='submit')
+        %input.disabled(type='submit' id='submit')
 
 :javascript
     function calculate_remaining() {
@@ -22,15 +22,19 @@
         $('#characters_left').text(remaining + " characters left!");
     };
 
-    $('#submit').click(function() {
-        if($('#entry').val().length == 0) {
-            alert("C'mon gimme something to work with!");
-            return false;
-        } else if ($('#entry').val().match(/\s/)) {
-            alert("One word limit baby!");
-            return false;
+    function disable_submit() {
+        $('#submit').addClass('disabled');
+    };
+
+    function enable_submit() {
+        $('#submit').removeClass('disabled');
+    };
+
+    $('#entry').keypress(function() {
+        if($('#entry').val().match(/\s/)) {
+            disable_submit();
         } else {
-            return true;
+            enable_submit();
         }
     });
 
@@ -38,4 +42,6 @@
         calculate_remaining();
     });
 
-    $(document).ready(calculate_remaining());
+    $(document).ready(function() {
+        calculate_remaining();
+    });
