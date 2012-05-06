@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'json'
+require 'haml'
 
 require './userpool.rb'
 require './game.rb'
@@ -33,6 +34,10 @@ post '/add_word/:word' do
     end
 
     200
+end
+
+get '/signup' do
+  haml :signup
 end
 
 post '/signup/:username' do
