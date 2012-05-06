@@ -17,7 +17,7 @@ class Tweeter
         Twitter.update(text)
     end
 
-    def tweet_your_turn(username)
-        Twitter.update("@#{username} hey it's your turn")
+    def tweet_your_turn(username, last_word)
+        Twitter.update("@#{username} Hey, it's your turn.  The last word was: '#{last_word}'.  http://192.168.2.29:4567/submit")
     end
 end
