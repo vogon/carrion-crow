@@ -4,9 +4,11 @@ require 'haml'
 
 require './userpool.rb'
 require './game.rb'
+require './tweeter.rb'
 
 $game = nil
 $userpool = UserPool.new
+$tweeter = Tweeter.new
 
 # magic endpoint: http://192.168.2.29:4567
 
@@ -32,6 +34,16 @@ post '/add_word/:word' do
     if (params[:word].length > $game.characters_remaining) then
         403
     end
+
+    $game.add_word(params[:word])
+
+    if ($game.characters_remaining < 10) then
+        $game.finish!
+        $game = Game.new
+    end
+
+    $userpool.next!
+    $tweeter.tweet_your_turn($userpool.current)
 
     200
 end

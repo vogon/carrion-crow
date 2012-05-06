@@ -8,7 +8,7 @@ class UserPool
         @pool << username
     end
 
-    def next
+    def next!
         @cursor = (@cursor + 1) % @pool.length
     end
 

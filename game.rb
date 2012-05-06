@@ -25,5 +25,6 @@ class Game
     def finish!
         @text += "."
         # post that shit to twitter
+        $tweeter.tweet_game_over(@text)
     end
 end
