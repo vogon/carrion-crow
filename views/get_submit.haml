@@ -1,47 +1,49 @@
+%title
+    Carrion Crow: Exquisite Corpse Eats Twitter
+#previous
+    Previous Word
+#word
+    = @last_word
+#form
+    %form(action='/submit' method='POST')
 
-%input{:id => 'remaining', :type => 'hidden', :value => @characters_left}
+        %label(for='name')
+            Your Word
+            #characters_left
+        %br
 
-%script{:type => "text/javascript",
-        :src  => "jquery-1.7.2.min.js"}
+        %p.name
+            %input(type='text' id='name' name='word')
 
-%form(action='/submit' method='POST')
-    %p
-        = "Current word is: #{@last_word}"
-    %p
-        #characters_left
-    %p
-        The next word is
-    %p
-        %input(type='text' id='entry' name='word')
-    %p
-        %input.disabled(type='submit' id='submit')
+        %p.submit
+            %input.disabled(type='submit' id='submit')
 
-:javascript
-    function calculate_remaining() {
-        var remaining = $('#remaining').val() - $('#entry').val().length;
-        $('#characters_left').text(remaining + " characters left!");
-    };
+    :javascript
+        function calculate_remaining() {
+            var remaining = $('#remaining').val() - $('#name').val().length;
+            $('#characters_left').text(remaining + " characters left!");
+        };
 
-    function disable_submit() {
-        $('#submit').addClass('disabled');
-    };
+        function disable_submit() {
+            $('#submit').addClass('disabled');
+        };
 
-    function enable_submit() {
-        $('#submit').removeClass('disabled');
-    };
+        function enable_submit() {
+            $('#submit').removeClass('disabled');
+        };
 
-    $('#entry').keypress(function() {
-        if($('#entry').val().match(/\s/)) {
-            disable_submit();
-        } else {
-            enable_submit();
-        }
-    });
+        $('#name').keypress(function() {
+            if($('#name').val().match(/\s/)) {
+                disable_submit();
+            } else {
+                enable_submit();
+            }
+        });
 
-    $('#entry').keypress(function() {
-        calculate_remaining();
-    });
+        $('#name').keypress(function() {
+            calculate_remaining();
+        });
 
-    $(document).ready(function() {
-        calculate_remaining();
-    });
+        $(document).ready(function() {
+            calculate_remaining();
+        });

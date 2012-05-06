@@ -9,6 +9,7 @@ require './tweeter.rb'
 $game = nil
 $userpool = UserPool.new
 $tweeter = Tweeter.new
+$past_tweets = []
 
 # magic endpoint: http://192.168.2.29:4567
 
@@ -38,7 +39,9 @@ end
 post '/submit' do
     ensure_game
 
-    if (params[:word].length == nil) then
+    # puts params.inspect
+
+    if (params[:word] == nil) then
         return 400
     end
 
@@ -56,6 +59,7 @@ post '/submit' do
     $userpool.next!
     $tweeter.tweet_your_turn($userpool.current, $game.last_word)
 
+    @your_word = $game.last_word
     haml :post_submit
 end
 
@@ -70,4 +74,8 @@ end
 
 get '/is_it_my_turn/:username' do
     $userpool.current.eql?(params[:username]).to_json
+end
+
+get '/past_tweets' do
+    $past_tweets.to_json
 end

@@ -1,0 +1,97 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {background-color:#E5E5E5;
+	padding:0;
+	margin:0;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+#header {
+	font-size:36px;
+	color:#fff;
+	background-color:#000;
+	width:auto;
+	padding:14px;
+}
+
+#characters_left {
+	padding-top:5px;
+	font-size:12px;
+	color:#999;
+}
+
+#explanation {
+	font-size:12px;
+	color:#999;
+	padding-top:48px;
+	padding-left:48px;
+	padding-right:48px;
+}
+
+#form {
+	padding-top:24px;
+	padding-left:48px;
+	padding-right:48px;
+}
+
+#previous {
+	padding-top:48px;
+	padding-left:48px;
+	padding-right:48px;
+	padding-bottom:8px;
+}
+
+#word {
+	padding-left:48px;
+	padding-right:48px;
+	font-size:24px;
+	font-weight:bold;
+}
+
+input, textarea {
+	border:1px solid #ccc;
+	height:34px;
+	width:300px;
+	padding:4px;
+	font: normal 16px/100% Arial, Helvetica, sans-serif;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	box-shadow: inset rgba(0,0,0, 0.2) 0px 0px 10px;
+	-moz-box-shadow: inset rgba(0,0,0, 0.2) 0px 0px 10px;
+	-webkit-box-shadow: inset rgba(0,0,0, 0.2) 0px 0px 10px;
+}
+
+.submit input {
+	width:100px;
+	height:36px;
+	padding:0;
+	border:1px solid #999;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	border-color: #C9C9C9;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.30) 0px 0px 12px;
+	}
+
+.submit input:hover {
+	background-color:#333;
+	color:#fff;
+	border:0;
+	}
+
+.disabled {
+	width:100px;
+	height:36px;
+	padding:0;
+	border:1px solid #ccc;
+	background-color:#ccc;
+	color:#666;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+
