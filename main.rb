@@ -38,8 +38,12 @@ end
 post '/submit' do
     ensure_game
 
+    if (params[:word].length == nil) then
+        return 400
+    end
+
     if (params[:word].length > $game.characters_remaining) then
-        403
+        return 403
     end
 
     $game.add_word(params[:word])

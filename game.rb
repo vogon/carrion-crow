@@ -4,7 +4,8 @@ $words = YAML.load_file("./wordz.yml").shuffle
 
 class Game
     def initialize
-        @text = @last_word = nil
+        @text = ""
+        @last_word = nil
         add_word($words.pop)
     end
 
