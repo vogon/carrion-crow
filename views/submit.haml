@@ -1,0 +1,14 @@
+%script{:type => "text/javascript",
+        :src  => "public/jquery-1.7.2.min.js"}
+
+%p
+  = "Current word is: #{@last_word}"
+%p
+  The next word is
+  %p
+    %input(type='text' name='next_word' value='poopy poopy pants')
+  %p
+    %input(type='submit')
+
+:javascript
+  window.onload = function(){ alert("welcome"); }
