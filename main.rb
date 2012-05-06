@@ -36,13 +36,21 @@ post '/add_word/:word' do
     200
 end
 
+get '/submit' do
+    @last_word = $game.last_word
+    haml :submit
+end
+
+post '/submit' do
+
+end
+
 get '/signup' do
     haml :signup
 end
 
 post '/signup' do
     $userpool.add(params[:username])
-    puts "HEYY HEY #{params[:username]}"
     200
 end
 
