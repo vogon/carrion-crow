@@ -1,3 +1,4 @@
+
 %input{:id => 'remaining', :type => 'hidden', :value => @characters_left}
 
 %script{:type => "text/javascript",
@@ -11,15 +12,27 @@
     %p
         The next word is
     %p
-        %input(type='text' id='entry' name='next_word' value='poopy poopy pants')
+        %input(type='text' id='entry' name='word' value='poopy poopy pants')
     %p
-        %input(type='submit')
+        %input(type='submit' id='submit')
 
 :javascript
     function calculate_remaining() {
         var remaining = $('#remaining').val() - $('#entry').val().length;
         $('#characters_left').text(remaining + " characters left!");
     };
+
+    $('#submit').click(function() {
+        if($('#entry').val().length == 0) {
+            alert("C'mon gimme something to work with!");
+            return false;
+        } else if ($('#entry').val().match(/\s/)) {
+            alert("One word limit baby!");
+            return false;
+        } else {
+            return true;
+        }
+    });
 
     $('#entry').keypress(function() {
         calculate_remaining();
