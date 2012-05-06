@@ -13,10 +13,18 @@ def ensure_game
 end
 
 get '/characters_left' do
+    ensure_game
     $game.characters_remaining
 end
 
-get '/add_word/:word' do
+get '/last_word' do
+    ensure_game
+    $game.last_word
+end
+
+post '/add_word/:word' do
+    ensure_game
+
     if (params[:word].length > $game.characters_remaining) then
         403
     end
@@ -24,10 +32,10 @@ get '/add_word/:word' do
     200
 end
 
-get '/signup/:username' do
-    UserPool.add(params[:username])
+post '/signup/:username' do
+    $userpool.add(params[:username])
 end
 
 get '/is_it_my_turn/:username' do
-
+    $userpool.current.eql?(params[:username])
 end
