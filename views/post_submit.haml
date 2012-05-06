@@ -1,7 +1,17 @@
-%p You wrote:
+#you_wrote
+    You wrote:
 
-%p
-    %h4
-        = @your_word
+#your_word
+    = @your_word
 
-%p Thanks for making Twitter full of nonsense!
+#thanks
+    Thanks for making Twitter full of nonsense!
+
+:javascript
+    function backtosubmit() {
+        window.location = "http://192.168.2.29:4567/submit"
+    };
+
+    $(document).ready(function() {
+        setTimeout('backtosubmit()', 1000)
+    });

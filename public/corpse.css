@@ -94,4 +94,24 @@ input:focus, textarea:focus {
 	-webkit-border-radius: 5px;
 }
 
+#you_wrote {
+	padding-top:24px;
+	padding-left:48px;
+	padding-right:48px;
+}
 
+#your_word {
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:48px;
+	padding-right:48px;
+	font-size:24px;
+	font-weight:bold;
+}
+
+#thanks {
+	padding-left:48px;
+	padding-right:48px;
+	font-size:18px;
+	color:#666;
+}
