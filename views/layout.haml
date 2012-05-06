@@ -1,0 +1,10 @@
+!!!
+%html
+    %head
+        %link{:rel => "stylesheet", :href => "corpse.css"}
+        %script{:type => "text/javascript", :src => "jquery-1.7.2.min.js"}
+        %input{:id => 'remaining', :type => 'hidden', :value => @characters_left}
+    %body
+        #header
+            %img{:src => 'banner.png'}
+        = yield

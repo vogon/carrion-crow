@@ -56,6 +56,7 @@ post '/submit' do
     $userpool.next!
     $tweeter.tweet_your_turn($userpool.current, $game.last_word)
 
+    @your_word = $game.last_word
     haml :post_submit
 end
 
